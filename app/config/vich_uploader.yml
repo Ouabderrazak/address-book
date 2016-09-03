@@ -1,0 +1,23 @@
+#vich upload configuration
+vich_uploader:
+    db_driver: orm
+    mappings:
+        #logo client upload
+        client_logo:
+            uri_prefix:         /uploads/client/logo
+            upload_destination: %kernel.root_dir%/../web/uploads/client/logo
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:
+                service: vich_uploader.namer_property
+                options: { property: 'name'}
+        #photo collaborator
+        collaborator_photo:
+            uri_prefix:         /uploads/collaborator/photo
+            upload_destination: %kernel.root_dir%/../web/uploads/collaborator/photo
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:
+                service: vich_uploader.namer_uniqid
